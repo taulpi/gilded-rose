@@ -48,6 +48,21 @@ class GildedRoseTest {
         assertEquals(0, item.quality);
     }
 
+    @ParameterizedTest
+    @CsvSource({
+        "-1, 2, 0",
+        "-2, 2, 0",
+        "-100, 2, 0",
+        "-1, 99, 97",
+    })
+    void once_the_sell_by_date_has_passed_quality_degrades_twice_as_fast(int sellIn, int quality, int expected) {
+        Item item = new Item("some Item", sellIn, quality);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(expected, item.quality);
+    }
+
     private void whenQualityIsUpdated(Item item) {
         new GildedRose(new Item[]{item}).updateQuality();
     }
