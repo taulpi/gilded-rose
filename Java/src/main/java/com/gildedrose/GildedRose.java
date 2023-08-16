@@ -138,11 +138,7 @@ class GildedRose {
 
         @Override
         public int quality() {
-            int updatedQuality = item.quality;
-            if (updatedQuality < 50) {
-                updatedQuality++;
-            }
-            return updatedQuality;
+            return 80;
         }
     }
 }
