@@ -93,12 +93,8 @@ class GildedRose {
 
         @Override
         public int quality() {
-            int updatedQuality = item.quality;
-            updatedQuality++;
-            if (item.sellIn < 1) {
-                updatedQuality++;
-            }
-            return Math.min(50, updatedQuality);
+            int qualityIncrease = item.sellIn < 1 ? 2 : 1;
+            return Math.min(50, item.quality + qualityIncrease);
         }
     }
 
