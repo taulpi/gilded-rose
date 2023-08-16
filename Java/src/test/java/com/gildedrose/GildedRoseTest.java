@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -83,6 +84,28 @@ class GildedRoseTest {
         whenQualityIsUpdated(item);
 
         assertEquals(80, item.quality);
+    }
+
+    @Test
+    void qualityOfAllItemsIsAdjusted() {
+        Item item1 = new Item("some Item", 1, 3);
+        Item item2 = new Item("some Item", 4, 50);
+
+        new GildedRose(new Item[]{item1, item2}).updateQuality();
+
+        assertEquals(2, item1.quality);
+        assertEquals(49, item2.quality);
+    }
+
+    @Test
+    void sellInOfAllItemsIsAdjusted() {
+        Item item1 = new Item("some Item", 1, 3);
+        Item item2 = new Item("some Item", 4, 50);
+
+        new GildedRose(new Item[]{item1, item2}).updateQuality();
+
+        assertEquals(0, item1.sellIn);
+        assertEquals(3, item2.sellIn);
     }
 
     @ParameterizedTest
