@@ -17,18 +17,18 @@ class GildedRose {
 
     private UpdatedItem updated(Item item) {
         if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            return new OrdinaryUpdatedItem.UpdatedSulfuras(item);
+            return new UpdatedOrdinaryItem.UpdatedSulfuras(item);
         }
         if (item.name.equals("Aged Brie")) {
-            return new OrdinaryUpdatedItem.UpdatedAgedBrie(item);
+            return new UpdatedOrdinaryItem.UpdatedAgedBrie(item);
         }
-        return new OrdinaryUpdatedItem(item);
+        return new UpdatedOrdinaryItem(item);
     }
 
-    private static class OrdinaryUpdatedItem implements UpdatedItem {
+    private static class UpdatedOrdinaryItem implements UpdatedItem {
         private Item item;
 
-        public OrdinaryUpdatedItem(Item item) {
+        public UpdatedOrdinaryItem(Item item) {
             this.item = item;
         }
 
