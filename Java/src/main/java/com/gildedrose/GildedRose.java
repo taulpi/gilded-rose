@@ -80,31 +80,6 @@ class GildedRose {
             }
             return updatedQuality;
         }
-
-
-        private static class UpdatedSulfuras implements UpdatedItem {
-            private Item item;
-
-            public UpdatedSulfuras(Item item) {
-                this.item = item;
-            }
-
-            @Override
-            public int sellIn() {
-                return item.sellIn;
-            }
-
-            @Override
-            public int quality() {
-                int updatedQuality = item.quality;
-                if (updatedQuality < 50) {
-                    updatedQuality++;
-                }
-                return updatedQuality;
-            }
-        }
-
-
     }
 
     private static class UpdatedBackstageItem implements UpdatedItem {
