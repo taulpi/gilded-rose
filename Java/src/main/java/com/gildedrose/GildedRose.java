@@ -15,23 +15,23 @@ class GildedRose {
                 && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (items[i].quality > 0) {
                     if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                        updatedQuality = updatedQuality - 1;
+                        updatedQuality -= 1;
                     }
                 }
             } else {
                 if (updatedQuality < 50) {
-                    updatedQuality = updatedQuality + 1;
+                    updatedQuality++;
 
                     if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (updatedSellIn < 11) {
                             if (updatedQuality < 50) {
-                                updatedQuality = updatedQuality + 1;
+                                updatedQuality++;
                             }
                         }
 
                         if (updatedSellIn < 6) {
                             if (updatedQuality < 50) {
-                                updatedQuality = updatedQuality + 1;
+                                updatedQuality++;
                             }
                         }
                     }
@@ -39,7 +39,7 @@ class GildedRose {
             }
 
             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                updatedSellIn = updatedSellIn - 1;
+                updatedSellIn -= 1;
             }
 
             if (updatedSellIn < 0) {
@@ -47,15 +47,15 @@ class GildedRose {
                     if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (updatedQuality > 0) {
                             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                                updatedQuality = updatedQuality - 1;
+                                updatedQuality -= 1;
                             }
                         }
                     } else {
-                        updatedQuality = updatedQuality - updatedQuality;
+                        updatedQuality -= updatedQuality;
                     }
                 } else {
                     if (updatedQuality < 50) {
-                        updatedQuality = updatedQuality + 1;
+                        updatedQuality++;
                     }
                 }
             }
