@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -62,6 +63,16 @@ class GildedRoseTest {
         whenQualityIsUpdated(item);
 
         assertEquals(50, item.quality);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 100, -1, -2, -3, -4, -5, -100})
+    void sulfurasNeverHasToBeSold(int originalSellin) {
+        Item item = new Item("Sulfuras, Hand of Ragnaros", originalSellin, 80);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(originalSellin, item.sellIn);
     }
 
     @ParameterizedTest
