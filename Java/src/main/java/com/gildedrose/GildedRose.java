@@ -47,10 +47,8 @@ class GildedRose {
             if (item.quality > 0) {
                 updatedQuality--;
             }
-            if (item.sellIn < 1) {
-                if (updatedQuality > 0) {
-                    updatedQuality--;
-                }
+            if (item.sellIn < 1 && updatedQuality > 0) {
+                updatedQuality--;
             }
             return updatedQuality;
         }
@@ -73,21 +71,13 @@ class GildedRose {
             int updatedQuality = item.quality;
             if (updatedQuality < 50) {
                 updatedQuality++;
-
-                if (item.sellIn < 11) {
-                    if (updatedQuality < 50) {
-                        updatedQuality++;
-                    }
+                if (item.sellIn < 11 && updatedQuality < 50) {
+                    updatedQuality++;
                 }
-
-                if (item.sellIn < 6) {
-                    if (updatedQuality < 50) {
-                        updatedQuality++;
-                    }
+                if (item.sellIn < 6 && updatedQuality < 50) {
+                    updatedQuality++;
                 }
             }
-
-
             if (item.sellIn < 1) {
                 updatedQuality -= updatedQuality;
             }
@@ -113,12 +103,8 @@ class GildedRose {
             if (updatedQuality < 50) {
                 updatedQuality++;
             }
-
-
-            if (item.sellIn < 1) {
-                if (updatedQuality < 50) {
-                    updatedQuality++;
-                }
+            if (item.sellIn < 1 && (updatedQuality < 50)) {
+                updatedQuality++;
             }
             return updatedQuality;
         }
