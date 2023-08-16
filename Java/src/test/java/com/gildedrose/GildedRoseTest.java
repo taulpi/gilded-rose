@@ -1,6 +1,5 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -39,9 +38,13 @@ class GildedRoseTest {
         assertEquals(expected, item.quality);
     }
 
-    @Test
-    void qualityDoesNotDecreaseBelow0() {
-        Item item = new Item("Some non special Item", 0, 0);
+    @ParameterizedTest
+    @CsvSource({
+        "0, 0",
+        "-1, 1",
+    })
+    void qualityDoesNotDecreaseBelow0(int sellIn, int quality) {
+        Item item = new Item("Some non special Item", sellIn, quality);
 
         whenQualityIsUpdated(item);
 
