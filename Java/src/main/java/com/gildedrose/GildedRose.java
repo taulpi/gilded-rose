@@ -65,15 +65,17 @@ class GildedRose {
             if (item.sellIn < 1) {
                 return 0;
             }
-            int updatedQuality = item.quality;
-            updatedQuality++;
-            if (item.sellIn < 11) {
-                updatedQuality++;
-            }
+            return Math.min(50, item.quality + qualityIncrease());
+        }
+
+        private int qualityIncrease() {
             if (item.sellIn < 6) {
-                updatedQuality++;
+                return 3;
             }
-            return Math.min(50, updatedQuality);
+            if (item.sellIn < 11) {
+                return 2;
+            }
+            return 1;
         }
     }
 
