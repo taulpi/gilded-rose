@@ -10,7 +10,6 @@ class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             int updatedQuality = items[i].quality;
-            int updatedSellIn = items[i].sellIn;
             if (!items[i].name.equals("Aged Brie")
                 && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (items[i].quality > 0) {
@@ -38,9 +37,6 @@ class GildedRose {
                 }
             }
 
-            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                updatedSellIn--;
-            }
 
             if (items[i].sellIn < 1) {
                 if (!items[i].name.equals("Aged Brie")) {
@@ -60,6 +56,11 @@ class GildedRose {
                 }
             }
             items[i].quality = updatedQuality;
+
+            int updatedSellIn = items[i].sellIn;
+            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+                updatedSellIn--;
+            }
             items[i].sellIn = updatedSellIn;
         }
     }
