@@ -53,6 +53,19 @@ class GildedRoseTest {
 
     @ParameterizedTest
     @CsvSource({
+        "1, 50",
+        "-1, 49",
+    })
+    void qualityDoesNotIncreaseOver50(int sellIn, int quality) {
+        Item item = new Item("Aged Brie", sellIn, quality);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(50, item.quality);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
         "0, 2, 0",
         "-1, 2, 0",
         "-2, 2, 0",
