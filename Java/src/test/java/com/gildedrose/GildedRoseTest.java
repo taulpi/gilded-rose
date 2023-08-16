@@ -7,11 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GildedRoseTest {
 
     @Test
-    void foo() {
-        Item[] items = new Item[] { new Item("foo", 0, 0) };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
+    void qualityDoesNotDecreaseBelow0() {
+        Item item = new Item("Some non special Item", 0, 0);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(0, item.quality);
     }
 
+    private void whenQualityIsUpdated(Item item) {
+        new GildedRose(new Item[]{item}).updateQuality();
+    }
 }
