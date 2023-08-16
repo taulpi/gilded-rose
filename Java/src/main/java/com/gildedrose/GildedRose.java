@@ -15,11 +15,11 @@ class GildedRose {
     }
 
     private int updatedSellIn(Item item) {
-        int updatedSellIn = item.sellIn;
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            updatedSellIn--;
+        if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            return item.sellIn - 1;
+        } else {
+            return item.sellIn;
         }
-        return updatedSellIn;
     }
 
     private int updatedQuality(Item item) {
