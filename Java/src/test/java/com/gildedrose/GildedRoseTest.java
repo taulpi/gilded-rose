@@ -7,6 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GildedRoseTest {
 
     @Test
+    void theSellinIsIncreased() {
+        Item item = new Item("Some non special Item", 0, 0);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(-1, item.sellIn);
+
+    }
+    @Test
     void qualityDoesNotDecreaseBelow0() {
         Item item = new Item("Some non special Item", 0, 0);
 
