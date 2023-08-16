@@ -86,6 +86,46 @@ class GildedRoseTest {
         assertEquals(80, item.quality);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {11, 12, 20, 30, 40, 50})
+    void backstagePasses_increaseInQuality_asItsSellInValueApproaches(int sellIn) {
+        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 10);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(11, item.quality);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {6, 7, 8, 9, 10})
+    void backstagePasses_increaseInQuality_twice_AsItsSellInUnder10(int sellIn) {
+        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 10);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(12, item.quality);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void backstagePasses_increaseInQuality_thrice_AsItsSellInUnder10(int sellIn) {
+        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 10);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(13, item.quality);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, -5, -100})
+    void backstagePasses_qualityIs0_whenSellIn0OrLower(int sellIn) {
+        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 10);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(0, item.quality);
+    }
+
     @Test
     void qualityOfAllItemsIsAdjusted() {
         Item item1 = new Item("some Item", 1, 3);
