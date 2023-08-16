@@ -44,38 +44,12 @@ class GildedRose {
         @Override
         public int quality() {
             int updatedQuality = item.quality;
-            if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (item.quality > 0) {
-                    updatedQuality--;
-                }
-            } else {
-                if (updatedQuality < 50) {
-                    updatedQuality++;
-
-                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (item.sellIn < 11) {
-                            if (updatedQuality < 50) {
-                                updatedQuality++;
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (updatedQuality < 50) {
-                                updatedQuality++;
-                            }
-                        }
-                    }
-                }
+            if (item.quality > 0) {
+                updatedQuality--;
             }
-
-
             if (item.sellIn < 1) {
-                if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (updatedQuality > 0) {
-                        updatedQuality--;
-                    }
-                } else {
-                    updatedQuality -= updatedQuality;
+                if (updatedQuality > 0) {
+                    updatedQuality--;
                 }
             }
             return updatedQuality;
