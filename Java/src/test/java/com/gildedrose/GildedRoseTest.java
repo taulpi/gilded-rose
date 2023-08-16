@@ -76,6 +76,16 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 100, -1, -2, -3, -4, -5, -100})
+    void sulfurasNeverDecreasesInQuality(int sellIn) {
+        Item item = new Item("Sulfuras, Hand of Ragnaros", sellIn, 80);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(80, item.quality);
+    }
+
+    @ParameterizedTest
     @CsvSource({
         "0, 2, 0",
         "-1, 2, 0",
