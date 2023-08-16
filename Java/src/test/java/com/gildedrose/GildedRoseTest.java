@@ -53,6 +53,7 @@ class GildedRoseTest {
 
     @ParameterizedTest
     @CsvSource({
+        "0, 2, 0",
         "-1, 2, 0",
         "-2, 2, 0",
         "-100, 2, 0",
@@ -60,6 +61,23 @@ class GildedRoseTest {
     })
     void onceTheSellByDateHasPassed_QualityDegradesTwiceAsFast(int sellIn, int quality, int expected) {
         Item item = new Item("some Item", sellIn, quality);
+
+        whenQualityIsUpdated(item);
+
+        assertEquals(expected, item.quality);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "1, 0, 1",
+        "1, 1, 2",
+        "1, 49, 50",
+        "-1, 0, 2",
+        "-1, 1, 3",
+        "-1, 48, 50",
+    })
+    void agedBrieIncreasesInQuality(int sellIn, int quality, int expected) {
+        Item item = new Item("Aged Brie", sellIn, quality);
 
         whenQualityIsUpdated(item);
 
