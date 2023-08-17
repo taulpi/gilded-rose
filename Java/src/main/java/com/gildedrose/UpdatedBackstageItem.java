@@ -2,14 +2,16 @@ package com.gildedrose;
 
 class UpdatedBackstageItem implements UpdatedItem {
     private Item item;
+    private final UpdatedSellIn updatedSellIn;
 
-    public UpdatedBackstageItem(Item item) {
+    public UpdatedBackstageItem(Item item, UpdatedSellIn updatedSellIn) {
         this.item = item;
+        this.updatedSellIn = updatedSellIn;
     }
 
     @Override
     public int sellIn() {
-        return item.sellIn - 1;
+        return updatedSellIn.value();
     }
 
     @Override

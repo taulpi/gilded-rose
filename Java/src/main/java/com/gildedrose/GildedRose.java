@@ -23,7 +23,7 @@ class GildedRose {
             return new UpdatedAgedBrie(item);
         }
         if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            return new UpdatedBackstageItem(item);
+            return new UpdatedBackstageItem(item, new UpdatedSellIn(item.sellIn));
         }
 
         return new UpdatedOrdinaryItem(new UpdatedSellIn(item.sellIn), new UpdatedQuality(item.sellIn, item.quality));
