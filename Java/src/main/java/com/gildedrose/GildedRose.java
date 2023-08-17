@@ -20,7 +20,7 @@ class GildedRose {
             return new UpdatedSulfuras(item);
         }
         if (item.name.equals("Aged Brie")) {
-            return new UpdatedAgedBrie(item);
+            return new UpdatedAgedBrie(item, new UpdatedSellIn(item.sellIn));
         }
         if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             return new UpdatedBackstageItem(item, new UpdatedSellIn(item.sellIn));
