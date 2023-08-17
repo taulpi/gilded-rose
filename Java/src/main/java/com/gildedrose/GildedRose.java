@@ -26,7 +26,7 @@ class GildedRose {
             return new UpdatedBackstageItem(item);
         }
 
-        return new UpdatedOrdinaryItem(item, new UpdatedSellIn(item.sellIn));
+        return new UpdatedOrdinaryItem(new UpdatedSellIn(item.sellIn), new UpdatedQuality(item.sellIn, item.quality));
     }
 
 }
