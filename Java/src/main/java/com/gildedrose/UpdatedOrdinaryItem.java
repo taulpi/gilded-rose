@@ -1,15 +1,17 @@
 package com.gildedrose;
 
 class UpdatedOrdinaryItem implements UpdatedItem {
-    private Item item;
+    private final Item item;
+    private UpdatedSellIn updatedSellIn;
 
-    public UpdatedOrdinaryItem(Item item) {
+    public UpdatedOrdinaryItem(Item item, UpdatedSellIn updatedSellIn) {
         this.item = item;
+        this.updatedSellIn = updatedSellIn;
     }
 
     @Override
     public int sellIn() {
-        return item.sellIn - 1;
+        return updatedSellIn.value();
     }
 
     @Override
@@ -17,4 +19,5 @@ class UpdatedOrdinaryItem implements UpdatedItem {
         int qualityDecrease = item.sellIn < 1 ? 2 : 1;
         return Math.max(0, item.quality - qualityDecrease);
     }
+
 }
