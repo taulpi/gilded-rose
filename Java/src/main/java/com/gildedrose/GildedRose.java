@@ -20,13 +20,13 @@ class GildedRose {
             return new UpdatedSulfuras(new UpdatedLegendaryQuality(), new UpdatedLegendarySellIn(item.sellIn));
         }
         if (item.name.equals("Aged Brie")) {
-            return new UpdatedAgedBrie(item, new UpdatedSellIn(item.sellIn));
+            return new UpdatedAgedBrie(item, new UpdatedStandardSellIn(item.sellIn));
         }
         if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            return new UpdatedBackstageItem(item, new UpdatedSellIn(item.sellIn));
+            return new UpdatedBackstageItem(item, new UpdatedStandardSellIn(item.sellIn));
         }
 
-        return new UpdatedOrdinaryItem(new UpdatedSellIn(item.sellIn), new UpdatedQuality(item.sellIn, item.quality));
+        return new UpdatedOrdinaryItem(new UpdatedStandardSellIn(item.sellIn), new UpdatedStandardQuality(item.sellIn, item.quality));
     }
 
 }

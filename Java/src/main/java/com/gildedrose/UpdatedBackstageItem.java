@@ -2,9 +2,9 @@ package com.gildedrose;
 
 class UpdatedBackstageItem implements UpdatedItem {
     private Item item;
-    private final UpdatedSellIn updatedSellIn;
+    private final UpdatedStandardSellIn updatedSellIn;
 
-    public UpdatedBackstageItem(Item item, UpdatedSellIn updatedSellIn) {
+    public UpdatedBackstageItem(Item item, UpdatedStandardSellIn updatedSellIn) {
         this.item = item;
         this.updatedSellIn = updatedSellIn;
     }

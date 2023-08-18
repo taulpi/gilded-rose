@@ -1,10 +1,10 @@
 package com.gildedrose;
 
 class UpdatedOrdinaryItem implements UpdatedItem {
-    private final UpdatedSellIn updatedSellIn;
+    private final UpdatedStandardSellIn updatedSellIn;
     private final UpdatedQuality updatedQuality;
 
-    public UpdatedOrdinaryItem(UpdatedSellIn updatedSellIn, UpdatedQuality updatedQuality) {
+    public UpdatedOrdinaryItem(UpdatedStandardSellIn updatedSellIn, UpdatedQuality updatedQuality) {
         this.updatedSellIn = updatedSellIn;
         this.updatedQuality = updatedQuality;
     }

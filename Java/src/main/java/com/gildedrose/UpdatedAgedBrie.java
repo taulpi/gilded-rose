@@ -2,9 +2,9 @@ package com.gildedrose;
 
 class UpdatedAgedBrie implements UpdatedItem {
     private Item item;
-    private final UpdatedSellIn updatedSellIn;
+    private final UpdatedStandardSellIn updatedSellIn;
 
-    public UpdatedAgedBrie(Item item, UpdatedSellIn updatedSellIn) {
+    public UpdatedAgedBrie(Item item, UpdatedStandardSellIn updatedSellIn) {
         this.item = item;
         this.updatedSellIn = updatedSellIn;
     }
