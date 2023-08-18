@@ -2,9 +2,11 @@ package com.gildedrose;
 
 class UpdatedSulfuras implements UpdatedItem {
     private Item item;
+    private UpdatedLegendaryQuality updatedLegendaryQuality;
 
-    public UpdatedSulfuras(Item item) {
+    public UpdatedSulfuras(Item item, UpdatedLegendaryQuality updatedLegendaryQuality) {
         this.item = item;
+        this.updatedLegendaryQuality = updatedLegendaryQuality;
     }
 
     @Override
@@ -14,6 +16,7 @@ class UpdatedSulfuras implements UpdatedItem {
 
     @Override
     public int quality() {
-        return 80;
+        return updatedLegendaryQuality.value();
     }
+
 }
