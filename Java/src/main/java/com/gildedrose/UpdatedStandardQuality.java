@@ -12,6 +12,6 @@ class UpdatedStandardQuality implements UpdatedQuality {
     @Override
     public int value() {
         int qualityDecrease = sellIn < 1 ? 2 : 1;
-        return Math.max(0, quality - qualityDecrease);
+        return quality - qualityDecrease;
     }
 }

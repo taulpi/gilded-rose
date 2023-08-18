@@ -17,17 +17,17 @@ class GildedRose {
 
     private UpdatedItem updated(Item item) {
         return switch (item.name) {
-            case "Sulfuras, Hand of Ragnaros" -> new UpdatedQualityAndSellIn(
+            case "Sulfuras, Hand of Ragnaros" -> new UpdatedItem(
                 new UpdatedLegendaryQuality(),
                 new UpdatedLegendarySellIn(item.sellIn));
-            case "Aged Brie" -> new UpdatedQualityAndSellIn(
-                new UpdatedAgedBrieQuality(item.quality, item.sellIn),
+            case "Aged Brie" -> new UpdatedItem(
+                new CappedQuality(new UpdatedAgedBrieQuality(item.quality, item.sellIn)),
                 new UpdatedStandardSellIn(item.sellIn));
-            case "Backstage passes to a TAFKAL80ETC concert" -> new UpdatedQualityAndSellIn(
-                new UpdatedConcertTicketQuality(item.quality, item.sellIn),
+            case "Backstage passes to a TAFKAL80ETC concert" -> new UpdatedItem(
+                new CappedQuality(new UpdatedConcertTicketQuality(item.quality, item.sellIn)),
                 new UpdatedStandardSellIn(item.sellIn));
-            default -> new UpdatedQualityAndSellIn(
-                new UpdatedStandardQuality(item.sellIn, item.quality),
+            default -> new UpdatedItem(
+                new CappedQuality(new UpdatedStandardQuality(item.sellIn, item.quality)),
                 new UpdatedStandardSellIn(item.sellIn));
         };
     }

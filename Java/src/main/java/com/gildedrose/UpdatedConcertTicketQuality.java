@@ -14,7 +14,7 @@ class UpdatedConcertTicketQuality implements UpdatedQuality {
         if (oldSellIn < 1) {
             return 0;
         }
-        return Math.min(50, oldQuality + qualityIncrease());
+        return oldQuality + qualityIncrease();
     }
 
     private int qualityIncrease() {

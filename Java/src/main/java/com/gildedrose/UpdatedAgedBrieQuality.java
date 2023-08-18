@@ -13,6 +13,6 @@ class UpdatedAgedBrieQuality implements UpdatedQuality {
     @Override
     public int value() {
         int qualityIncrease = oldSellIn < 1 ? 2 : 1;
-        return Math.min(50, oldQuality + qualityIncrease);
+        return oldQuality + qualityIncrease;
     }
 }

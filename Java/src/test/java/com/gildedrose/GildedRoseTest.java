@@ -30,7 +30,7 @@ class GildedRoseTest {
     @CsvSource({
         "2, 1",
         "1, 0",
-        "999, 998",
+        "50, 49",
     })
     void qualityIsDecreased(int quality, int expected) {
         Item item = new Item("some Item", 5, quality);
@@ -154,7 +154,7 @@ class GildedRoseTest {
         "-1, 2, 0",
         "-2, 2, 0",
         "-100, 2, 0",
-        "-1, 99, 97",
+        "-1, 50, 48",
     })
     void onceTheSellByDateHasPassed_QualityDegradesTwiceAsFast(int sellIn, int quality, int expected) {
         Item item = new Item("some Item", sellIn, quality);
