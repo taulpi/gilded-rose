@@ -16,24 +16,20 @@ class GildedRose {
     }
 
     private UpdatedItem updated(Item item) {
-        if ("Sulfuras, Hand of Ragnaros".equals(item.name)) {
-            return new UpdatedQualityAndSellIn(
+        return switch (item.name) {
+            case "Sulfuras, Hand of Ragnaros" -> new UpdatedQualityAndSellIn(
                 new UpdatedLegendaryQuality(),
                 new UpdatedLegendarySellIn(item.sellIn));
-        }
-        if ("Aged Brie".equals(item.name)) {
-            return new UpdatedQualityAndSellIn(
+            case "Aged Brie" -> new UpdatedQualityAndSellIn(
                 new UpdatedAgedBrieQuality(item.quality, item.sellIn),
                 new UpdatedStandardSellIn(item.sellIn));
-        }
-        if ("Backstage passes to a TAFKAL80ETC concert".equals(item.name)) {
-            return new UpdatedQualityAndSellIn(
+            case "Backstage passes to a TAFKAL80ETC concert" -> new UpdatedQualityAndSellIn(
                 new UpdatedConcertTicketQuality(item.quality, item.sellIn),
                 new UpdatedStandardSellIn(item.sellIn));
-        }
-        return new UpdatedQualityAndSellIn(
-            new UpdatedStandardQuality(item.sellIn, item.quality),
-            new UpdatedStandardSellIn(item.sellIn));
+            default -> new UpdatedQualityAndSellIn(
+                new UpdatedStandardQuality(item.sellIn, item.quality),
+                new UpdatedStandardSellIn(item.sellIn));
+        };
     }
 
 }
