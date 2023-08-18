@@ -1,14 +1,14 @@
 package com.gildedrose;
 
 class UpdatedStandardSellIn implements UpdatedSellIn {
-    private final int sellIn;
+    private final int oldSellIn;
 
-    public UpdatedStandardSellIn(int sellIn) {
-        this.sellIn = sellIn;
+    UpdatedStandardSellIn(int oldSellIn) {
+        this.oldSellIn = oldSellIn;
     }
 
     @Override
     public int value() {
-        return sellIn - 1;
+        return oldSellIn - 1;
     }
 }
