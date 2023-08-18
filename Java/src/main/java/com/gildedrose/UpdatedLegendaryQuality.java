@@ -1,6 +1,7 @@
 package com.gildedrose;
 
-class UpdatedLegendaryQuality {
+class UpdatedLegendaryQuality implements UpdatedQuality {
+    @Override
     public int value() {
         return 80;
     }

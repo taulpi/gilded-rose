@@ -1,12 +1,13 @@
 package com.gildedrose;
 
-class UpdatedLegendarySellIn {
-    private int sellIn;
+class UpdatedLegendarySellIn implements UpdatedSellIn {
+    private final int sellIn;
 
-    public UpdatedLegendarySellIn(int sellIn) {
+    UpdatedLegendarySellIn(int sellIn) {
         this.sellIn = sellIn;
     }
 
+    @Override
     public int value() {
         return sellIn;
     }
