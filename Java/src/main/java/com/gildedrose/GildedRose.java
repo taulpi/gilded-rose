@@ -16,17 +16,17 @@ class GildedRose {
     }
 
     private UpdatedItem updated(Item item) {
-        if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+        if ("Sulfuras, Hand of Ragnaros".equals(item.name)) {
             return new UpdatedQualityAndSellIn(
                 new UpdatedLegendaryQuality(),
                 new UpdatedLegendarySellIn(item.sellIn));
         }
-        if (item.name.equals("Aged Brie")) {
+        if ("Aged Brie".equals(item.name)) {
             return new UpdatedQualityAndSellIn(
                 new UpdatedAgedBrieQuality(item.quality, item.sellIn),
                 new UpdatedStandardSellIn(item.sellIn));
         }
-        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+        if ("Backstage passes to a TAFKAL80ETC concert".equals(item.name)) {
             return new UpdatedQualityAndSellIn(
                 new UpdatedConcertTicketQuality(item.quality, item.sellIn),
                 new UpdatedStandardSellIn(item.sellIn));
