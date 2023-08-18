@@ -1,10 +1,10 @@
 package com.gildedrose;
 
-class UpdatedSulfuras implements UpdatedItem {
+class UpdatedSellInAndQuality implements UpdatedItem {
     private final UpdatedQuality updatedQuality;
     private final UpdatedSellIn updatedSellIn;
 
-    public UpdatedSulfuras(UpdatedQuality updatedQuality, UpdatedSellIn updatedSellIn) {
+    public UpdatedSellInAndQuality(UpdatedQuality updatedQuality, UpdatedSellIn updatedSellIn) {
         this.updatedQuality = updatedQuality;
         this.updatedSellIn = updatedSellIn;
     }
