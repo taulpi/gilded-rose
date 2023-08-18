@@ -17,7 +17,7 @@ class GildedRose {
 
     private UpdatedItem updated(Item item) {
         if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            return new UpdatedSulfuras(item, new UpdatedLegendaryQuality());
+            return new UpdatedSulfuras(new UpdatedLegendaryQuality(), new UpdatedLegendarySellIn(item.sellIn));
         }
         if (item.name.equals("Aged Brie")) {
             return new UpdatedAgedBrie(item, new UpdatedSellIn(item.sellIn));

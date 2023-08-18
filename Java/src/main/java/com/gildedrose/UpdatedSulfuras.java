@@ -1,22 +1,22 @@
 package com.gildedrose;
 
 class UpdatedSulfuras implements UpdatedItem {
-    private Item item;
-    private UpdatedLegendaryQuality updatedLegendaryQuality;
+    private UpdatedLegendaryQuality updatedQuality;
+    private UpdatedLegendarySellIn updatedSellIn;
 
-    public UpdatedSulfuras(Item item, UpdatedLegendaryQuality updatedLegendaryQuality) {
-        this.item = item;
-        this.updatedLegendaryQuality = updatedLegendaryQuality;
+    public UpdatedSulfuras(UpdatedLegendaryQuality updatedQuality, UpdatedLegendarySellIn updatedSellIn) {
+        this.updatedQuality = updatedQuality;
+        this.updatedSellIn = updatedSellIn;
     }
 
     @Override
     public int sellIn() {
-        return item.sellIn;
+        return updatedSellIn.value();
     }
 
     @Override
     public int quality() {
-        return updatedLegendaryQuality.value();
+        return updatedQuality.value();
     }
 
 }
