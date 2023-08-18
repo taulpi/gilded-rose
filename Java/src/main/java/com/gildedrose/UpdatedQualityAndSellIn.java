@@ -4,7 +4,7 @@ class UpdatedQualityAndSellIn implements UpdatedItem {
     private final UpdatedQuality updatedQuality;
     private final UpdatedSellIn updatedSellIn;
 
-    public UpdatedQualityAndSellIn(UpdatedQuality updatedQuality, UpdatedSellIn updatedSellIn) {
+    UpdatedQualityAndSellIn(UpdatedQuality updatedQuality, UpdatedSellIn updatedSellIn) {
         this.updatedQuality = updatedQuality;
         this.updatedSellIn = updatedSellIn;
     }

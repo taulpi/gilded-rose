@@ -1,12 +1,12 @@
 package com.gildedrose;
 
 class UpdatedAgedBrie implements UpdatedItem {
-    private Item item;
     private final UpdatedStandardSellIn updatedSellIn;
+    private final UpdatedAgedBrieQuality updatedAgedBrieQuality;
 
-    public UpdatedAgedBrie(Item item, UpdatedStandardSellIn updatedSellIn) {
-        this.item = item;
+    UpdatedAgedBrie(UpdatedStandardSellIn updatedSellIn, UpdatedAgedBrieQuality updatedAgedBrieQuality) {
         this.updatedSellIn = updatedSellIn;
+        this.updatedAgedBrieQuality = updatedAgedBrieQuality;
     }
 
     @Override
@@ -16,7 +16,6 @@ class UpdatedAgedBrie implements UpdatedItem {
 
     @Override
     public int quality() {
-        int qualityIncrease = item.sellIn < 1 ? 2 : 1;
-        return Math.min(50, item.quality + qualityIncrease);
+        return updatedAgedBrieQuality.value();
     }
 }
