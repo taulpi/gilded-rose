@@ -20,7 +20,9 @@ class GildedRose {
             return new UpdatedQualityAndSellIn(new UpdatedLegendaryQuality(), new UpdatedLegendarySellIn(item.sellIn));
         }
         if (item.name.equals("Aged Brie")) {
-            return new UpdatedAgedBrie(new UpdatedStandardSellIn(item.sellIn), new UpdatedAgedBrieQuality(item.quality, item.sellIn));
+            return new UpdatedQualityAndSellIn(
+                new UpdatedAgedBrieQuality(item.quality, item.sellIn),
+                new UpdatedStandardSellIn(item.sellIn));
         }
         if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             return new UpdatedBackstageItem(item, new UpdatedStandardSellIn(item.sellIn));
