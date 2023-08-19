@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "sellIn={0}, updatedSellIn={1}")
     @CsvSource({
         "0, -1",
         "2, 1",
@@ -27,7 +27,7 @@ class GildedRoseTest {
         assertEquals(expected, item.sellIn);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "quality={0}, updatedQuality={1}")
     @CsvSource({
         "2, 1",
         "1, 0",
@@ -41,7 +41,7 @@ class GildedRoseTest {
         assertEquals(expected, item.quality);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "sellIn={0}, quality={1}")
     @CsvSource({
         "0, 0",
         "-1, 1",
@@ -54,7 +54,7 @@ class GildedRoseTest {
         assertEquals(0, item.quality);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "sellIn={0}")
     @ValueSource(ints = {1, 2, 3, 4, 5, 100, -1, -2, -3, -4, -5, -100})
     void sulfurasNeverHasToBeSold(int originalSellin) {
         Item item = new Item("Sulfuras, Hand of Ragnaros", originalSellin, 80);
@@ -64,7 +64,7 @@ class GildedRoseTest {
         assertEquals(originalSellin, item.sellIn);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "sellIn={0}")
     @ValueSource(ints = {1, 2, 3, 4, 5, 100, -1, -2, -3, -4, -5, -100})
     void sulfurasNeverDecreasesInQuality(int sellIn) {
         Item item = new Item("Sulfuras, Hand of Ragnaros", sellIn, 80);
@@ -74,7 +74,7 @@ class GildedRoseTest {
         assertEquals(80, item.quality);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "sellIn={0}")
     @ValueSource(ints = {11, 12, 20, 30, 40, 50})
     void backstagePasses_increaseInQuality_asItsSellInValueApproaches(int sellIn) {
         Item item = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 10);
@@ -84,7 +84,7 @@ class GildedRoseTest {
         assertEquals(11, item.quality);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "sellIn={0}")
     @ValueSource(ints = {6, 7, 8, 9, 10})
     void backstagePasses_increaseInQuality_twice_AsItsSellInUnder10(int sellIn) {
         Item item = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 10);
@@ -94,7 +94,7 @@ class GildedRoseTest {
         assertEquals(12, item.quality);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "sellIn={0}")
     @ValueSource(ints = {1, 2, 3, 4, 5})
     void backstagePasses_increaseInQuality_thrice_AsItsSellInUnder10(int sellIn) {
         Item item = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 10);
@@ -104,7 +104,7 @@ class GildedRoseTest {
         assertEquals(13, item.quality);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "sellIn={0}")
     @ValueSource(ints = {0, -1, -5, -100})
     void backstagePasses_qualityIs0_whenSellIn0OrLower(int sellIn) {
         Item item = new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, 10);
@@ -136,7 +136,7 @@ class GildedRoseTest {
         assertEquals(3, item2.sellIn);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "sellIn={0} , quality={1}, updatedQuality={2}")
     @CsvSource({
         "0, 2, 0",
         "-1, 2, 0",
@@ -159,7 +159,7 @@ class GildedRoseTest {
 
     @Nested
     class AgedBrieQuality {
-        @ParameterizedTest
+        @ParameterizedTest(name = "sellIn={0} , quality={1}, updatedQuality={2}")
         @CsvSource({
             "1, 0, 1",
             "1, 1, 2",
@@ -176,7 +176,7 @@ class GildedRoseTest {
             assertEquals(expected, item.quality);
         }
 
-        @ParameterizedTest
+        @ParameterizedTest(name = "sellIn={0} , quality={1}")
         @CsvSource({
             "1, 50",
             "-1, 49",
