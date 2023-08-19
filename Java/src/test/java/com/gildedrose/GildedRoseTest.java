@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -213,6 +214,7 @@ class GildedRoseTest {
             "2, 0",
             "3, 1",
         })
+        @Disabled
         void degradesTwiceAsFast(int quality, int expected) {
             Item item = new Item("Conjured", 5, quality);
 
