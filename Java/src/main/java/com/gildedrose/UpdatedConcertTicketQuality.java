@@ -11,10 +11,14 @@ class UpdatedConcertTicketQuality implements UpdatedQuality {
 
     @Override
     public int value() {
-        if (oldSellIn < 1) {
+        if (concertAlreadyHappened()) {
             return 0;
         }
         return oldQuality + qualityIncrease();
+    }
+
+    private boolean concertAlreadyHappened() {
+        return oldSellIn < 1;
     }
 
     private int qualityIncrease() {

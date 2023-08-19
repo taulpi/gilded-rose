@@ -1,9 +1,9 @@
 package com.gildedrose;
 
-class UpdatedStandardSellIn implements UpdatedSellIn {
+class UpdatedNormaSellIn implements UpdatedSellIn {
     private final int oldSellIn;
 
-    UpdatedStandardSellIn(int oldSellIn) {
+    UpdatedNormaSellIn(int oldSellIn) {
         this.oldSellIn = oldSellIn;
     }
 
