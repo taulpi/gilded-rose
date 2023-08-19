@@ -10,6 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
 
+    private void whenQualityIsUpdated(Item item) {
+        new GildedRose(new Item[]{item}).updateQuality();
+    }
+
     @Nested
     class TheSellIn {
         @ParameterizedTest(name = "sellIn={0}, updatedSellIn={1}")
@@ -98,10 +102,6 @@ class GildedRoseTest {
         }
     }
 
-
-    private void whenQualityIsUpdated(Item item) {
-        new GildedRose(new Item[]{item}).updateQuality();
-    }
 
     @Nested
     class AgedBrieQuality {
@@ -206,5 +206,3 @@ class GildedRoseTest {
     }
 
 }
-
-
