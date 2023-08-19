@@ -3,16 +3,15 @@ package com.gildedrose;
 class UpdatedAgedBrieQuality implements UpdatedQuality {
 
     private final int oldQuality;
-    private final int oldSellIn;
+    private final QualityAdjustment qualityAdjustment;
 
-    UpdatedAgedBrieQuality(int oldQuality, int oldSellIn) {
+    UpdatedAgedBrieQuality(int oldQuality, QualityAdjustment qualityAdjustment) {
         this.oldQuality = oldQuality;
-        this.oldSellIn = oldSellIn;
+        this.qualityAdjustment = qualityAdjustment;
     }
 
     @Override
     public int value() {
-        int qualityIncrease = oldSellIn < 1 ? 2 : 1;
-        return oldQuality + qualityIncrease;
+        return oldQuality + qualityAdjustment.value();
     }
 }
