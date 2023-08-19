@@ -46,7 +46,11 @@ class GildedRose {
 
     private UpdatedItem updatedAgedBrie(Item item) {
         return new UpdatedItem(
-            new CappedQuality(new UpdatedAgedBrieQuality(item.quality, new InvertedAdjustment(new NormalQualityAdjustment(item.sellIn)))),
+            new CappedQuality(
+                new UpdatedNormalQuality(item.quality,
+                    new InvertedAdjustment(new NormalQualityAdjustment(item.sellIn))
+                )
+            ),
             new UpdatedNormaSellIn(item.sellIn));
     }
 
