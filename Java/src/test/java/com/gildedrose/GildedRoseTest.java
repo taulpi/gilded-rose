@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -51,19 +52,6 @@ class GildedRoseTest {
         whenQualityIsUpdated(item);
 
         assertEquals(0, item.quality);
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-        "1, 50",
-        "-1, 49",
-    })
-    void qualityDoesNotIncreaseOver50(int sellIn, int quality) {
-        Item item = new Item("Aged Brie", sellIn, quality);
-
-        whenQualityIsUpdated(item);
-
-        assertEquals(50, item.quality);
     }
 
     @ParameterizedTest
@@ -164,24 +152,42 @@ class GildedRoseTest {
         assertEquals(expected, item.quality);
     }
 
-    @ParameterizedTest
-    @CsvSource({
-        "1, 0, 1",
-        "1, 1, 2",
-        "1, 49, 50",
-        "-1, 0, 2",
-        "-1, 1, 3",
-        "-1, 48, 50",
-    })
-    void agedBrieIncreasesInQuality(int sellIn, int quality, int expected) {
-        Item item = new Item("Aged Brie", sellIn, quality);
-
-        whenQualityIsUpdated(item);
-
-        assertEquals(expected, item.quality);
-    }
 
     private void whenQualityIsUpdated(Item item) {
         new GildedRose(new Item[]{item}).updateQuality();
+    }
+
+    @Nested
+    class AgedBrieQuality {
+        @ParameterizedTest
+        @CsvSource({
+            "1, 0, 1",
+            "1, 1, 2",
+            "1, 49, 50",
+            "-1, 0, 2",
+            "-1, 1, 3",
+            "-1, 48, 50",
+        })
+        void increases(int sellIn, int quality, int expected) {
+            Item item = new Item("Aged Brie", sellIn, quality);
+
+            whenQualityIsUpdated(item);
+
+            assertEquals(expected, item.quality);
+        }
+
+        @ParameterizedTest
+        @CsvSource({
+            "1, 50",
+            "-1, 49",
+        })
+        void doesNotIncreaseOver50(int sellIn, int quality) {
+            Item item = new Item("Aged Brie", sellIn, quality);
+
+            whenQualityIsUpdated(item);
+
+            assertEquals(50, item.quality);
+        }
+
     }
 }
