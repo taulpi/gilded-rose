@@ -1,17 +1,17 @@
 package com.gildedrose;
 
 class UpdatedNormalQuality implements UpdatedQuality {
-    private final int sellIn;
     private final int quality;
+    private final QualityAdjustment qualityAdjustment;
 
-    UpdatedNormalQuality(int sellIn, int quality) {
-        this.sellIn = sellIn;
+    UpdatedNormalQuality(int quality, QualityAdjustment qualityAdjustment) {
         this.quality = quality;
+        this.qualityAdjustment = qualityAdjustment;
     }
 
     @Override
     public int value() {
-        int qualityDecrease = sellIn < 1 ? 2 : 1;
-        return quality - qualityDecrease;
+        return quality - qualityAdjustment.value();
     }
+
 }

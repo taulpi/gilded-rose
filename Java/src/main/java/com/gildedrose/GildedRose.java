@@ -30,7 +30,7 @@ class GildedRose {
 
     private UpdatedItem updatedNormal(Item item) {
         return new UpdatedItem(
-            new CappedQuality(new UpdatedNormalQuality(item.sellIn, item.quality)),
+            new CappedQuality(new UpdatedNormalQuality(item.quality, new NormalQualityAdjustment(item.sellIn))),
             new UpdatedNormaSellIn(item.sellIn));
     }
 
