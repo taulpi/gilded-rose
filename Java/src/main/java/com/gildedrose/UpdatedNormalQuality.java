@@ -11,7 +11,7 @@ class UpdatedNormalQuality implements UpdatedQuality {
 
     @Override
     public int value() {
-        return quality - qualityAdjustment.value();
+        return quality + qualityAdjustment.value();
     }
 
 }

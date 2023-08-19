@@ -10,6 +10,6 @@ class NormalQualityAdjustment implements QualityAdjustment {
 
     @Override
     public int value() {
-        return sellIn < 1 ? 2 : 1;
+        return sellIn < 1 ? -2 : -1;
     }
 }
