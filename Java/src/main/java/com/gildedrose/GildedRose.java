@@ -23,7 +23,7 @@ class GildedRose {
         } else if ("Backstage passes to a TAFKAL80ETC concert".equals(item.name)) {
             return updatedBackstagePass(item);
         } else if ("Conjured".equals(item.name)) {
-            return new UpdatedItem(new ConstantQuality(0), new UpdatedNormaSellIn(item.sellIn));
+            return new UpdatedItem(new UpdatedNormalQuality(item.quality, new DoubledAdjustment(new NormalQualityAdjustment(item.sellIn))), new UpdatedNormaSellIn(item.sellIn));
         }
         return updatedNormal(item);
     }
