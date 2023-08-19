@@ -27,19 +27,19 @@ class GildedRose {
     private UpdatedItem updatedNormal(Item item) {
         return new UpdatedItem(
             new CappedQuality(new UpdatedNormalQuality(item.sellIn, item.quality)),
-            new UpdatedStandardSellIn(item.sellIn));
+            new UpdatedNormaSellIn(item.sellIn));
     }
 
     private UpdatedItem updatedBackstagePass(Item item) {
         return new UpdatedItem(
             new CappedQuality(new UpdatedConcertTicketQuality(item.quality, item.sellIn)),
-            new UpdatedStandardSellIn(item.sellIn));
+            new UpdatedNormaSellIn(item.sellIn));
     }
 
     private UpdatedItem updatedAgedBrie(Item item) {
         return new UpdatedItem(
             new CappedQuality(new UpdatedAgedBrieQuality(item.quality, item.sellIn)),
-            new UpdatedStandardSellIn(item.sellIn));
+            new UpdatedNormaSellIn(item.sellIn));
     }
 
     private UpdatedItem updatedLegendary(Item item) {
