@@ -17,19 +17,35 @@ class GildedRose {
 
     private UpdatedItem updated(Item item) {
         return switch (item.name) {
-            case "Sulfuras, Hand of Ragnaros" -> new UpdatedItem(
-                new UpdatedLegendaryQuality(),
-                new UpdatedLegendarySellIn(item.sellIn));
-            case "Aged Brie" -> new UpdatedItem(
-                new CappedQuality(new UpdatedAgedBrieQuality(item.quality, item.sellIn)),
-                new UpdatedStandardSellIn(item.sellIn));
-            case "Backstage passes to a TAFKAL80ETC concert" -> new UpdatedItem(
-                new CappedQuality(new UpdatedConcertTicketQuality(item.quality, item.sellIn)),
-                new UpdatedStandardSellIn(item.sellIn));
-            default -> new UpdatedItem(
-                new CappedQuality(new UpdatedNormalQuality(item.sellIn, item.quality)),
-                new UpdatedStandardSellIn(item.sellIn));
+            case "Sulfuras, Hand of Ragnaros" -> updatedLegendary(item);
+            case "Aged Brie" -> updatedAgedBrie(item);
+            case "Backstage passes to a TAFKAL80ETC concert" -> updatedBackstagePass(item);
+            default -> updatedNormal(item);
         };
+    }
+
+    private UpdatedItem updatedNormal(Item item) {
+        return new UpdatedItem(
+            new CappedQuality(new UpdatedNormalQuality(item.sellIn, item.quality)),
+            new UpdatedStandardSellIn(item.sellIn));
+    }
+
+    private UpdatedItem updatedBackstagePass(Item item) {
+        return new UpdatedItem(
+            new CappedQuality(new UpdatedConcertTicketQuality(item.quality, item.sellIn)),
+            new UpdatedStandardSellIn(item.sellIn));
+    }
+
+    private UpdatedItem updatedAgedBrie(Item item) {
+        return new UpdatedItem(
+            new CappedQuality(new UpdatedAgedBrieQuality(item.quality, item.sellIn)),
+            new UpdatedStandardSellIn(item.sellIn));
+    }
+
+    private UpdatedItem updatedLegendary(Item item) {
+        return new UpdatedItem(
+            new UpdatedLegendaryQuality(),
+            new UpdatedLegendarySellIn(item.sellIn));
     }
 
 }
