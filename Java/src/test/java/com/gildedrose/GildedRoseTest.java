@@ -10,21 +10,35 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
 
-    @ParameterizedTest(name = "sellIn={0}, updatedSellIn={1}")
-    @CsvSource({
-        "0, -1",
-        "2, 1",
-        "1, 0",
-        "999, 998",
-        "-1, -2",
-        "-111, -112",
-    })
-    void theSellinIsDecreased(int sellIn, int expected) {
-        Item item = new Item("some Item", sellIn, 0);
+    @Nested
+    class TheSellIn {
+        @ParameterizedTest(name = "sellIn={0}, updatedSellIn={1}")
+        @CsvSource({
+            "0, -1",
+            "2, 1",
+            "1, 0",
+            "999, 998",
+            "-1, -2",
+            "-111, -112",
+        })
+        void isDecreased(int sellIn, int expected) {
+            Item item = new Item("some Item", sellIn, 0);
 
-        whenQualityIsUpdated(item);
+            whenQualityIsUpdated(item);
 
-        assertEquals(expected, item.sellIn);
+            assertEquals(expected, item.sellIn);
+        }
+
+        @Test
+        void ofAllItemsIsAdjusted() {
+            Item item1 = new Item("some Item", 1, 3);
+            Item item2 = new Item("some Item", 4, 50);
+
+            new GildedRose(new Item[]{item1, item2}).updateQuality();
+
+            assertEquals(0, item1.sellIn);
+            assertEquals(3, item2.sellIn);
+        }
     }
 
     @Nested
@@ -82,17 +96,6 @@ class GildedRoseTest {
 
             assertEquals(expected, item.quality);
         }
-    }
-
-    @Test
-    void sellInOfAllItemsIsAdjusted() {
-        Item item1 = new Item("some Item", 1, 3);
-        Item item2 = new Item("some Item", 4, 50);
-
-        new GildedRose(new Item[]{item1, item2}).updateQuality();
-
-        assertEquals(0, item1.sellIn);
-        assertEquals(3, item2.sellIn);
     }
 
 
