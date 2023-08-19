@@ -27,7 +27,7 @@ class GildedRose {
                 new CappedQuality(new UpdatedConcertTicketQuality(item.quality, item.sellIn)),
                 new UpdatedStandardSellIn(item.sellIn));
             default -> new UpdatedItem(
-                new CappedQuality(new UpdatedStandardQuality(item.sellIn, item.quality)),
+                new CappedQuality(new UpdatedNormalQuality(item.sellIn, item.quality)),
                 new UpdatedStandardSellIn(item.sellIn));
         };
     }

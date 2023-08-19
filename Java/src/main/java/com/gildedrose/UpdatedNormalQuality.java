@@ -1,10 +1,10 @@
 package com.gildedrose;
 
-class UpdatedStandardQuality implements UpdatedQuality {
+class UpdatedNormalQuality implements UpdatedQuality {
     private final int sellIn;
     private final int quality;
 
-    UpdatedStandardQuality(int sellIn, int quality) {
+    UpdatedNormalQuality(int sellIn, int quality) {
         this.sellIn = sellIn;
         this.quality = quality;
     }
