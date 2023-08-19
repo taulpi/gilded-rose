@@ -54,26 +54,6 @@ class GildedRoseTest {
         assertEquals(0, item.quality);
     }
 
-    @ParameterizedTest(name = "sellIn={0}")
-    @ValueSource(ints = {1, 2, 3, 4, 5, 100, -1, -2, -3, -4, -5, -100})
-    void sulfurasNeverHasToBeSold(int originalSellin) {
-        Item item = new Item("Sulfuras, Hand of Ragnaros", originalSellin, 80);
-
-        whenQualityIsUpdated(item);
-
-        assertEquals(originalSellin, item.sellIn);
-    }
-
-    @ParameterizedTest(name = "sellIn={0}")
-    @ValueSource(ints = {1, 2, 3, 4, 5, 100, -1, -2, -3, -4, -5, -100})
-    void sulfurasNeverDecreasesInQuality(int sellIn) {
-        Item item = new Item("Sulfuras, Hand of Ragnaros", sellIn, 80);
-
-        whenQualityIsUpdated(item);
-
-        assertEquals(80, item.quality);
-    }
-
     @Test
     void qualityOfAllItemsIsAdjusted() {
         Item item1 = new Item("some Item", 1, 3);
@@ -149,6 +129,7 @@ class GildedRoseTest {
 
             assertEquals(50, item.quality);
         }
+
     }
 
     @Nested
@@ -195,5 +176,29 @@ class GildedRoseTest {
         }
     }
 
+    @Nested
+    class Sulfuras {
+        @ParameterizedTest(name = "sellIn={0}")
+        @ValueSource(ints = {1, 2, 3, 4, 5, 100, -1, -2, -3, -4, -5, -100})
+        void sellIn_neverDecreases(int originalSellin) {
+            Item item = new Item("Sulfuras, Hand of Ragnaros", originalSellin, 80);
+
+            whenQualityIsUpdated(item);
+
+            assertEquals(originalSellin, item.sellIn);
+        }
+
+        @ParameterizedTest(name = "sellIn={0}")
+        @ValueSource(ints = {1, 2, 3, 4, 5, 100, -1, -2, -3, -4, -5, -100})
+        void quality_neverDecreases(int sellIn) {
+            Item item = new Item("Sulfuras, Hand of Ragnaros", sellIn, 80);
+
+            whenQualityIsUpdated(item);
+
+            assertEquals(80, item.quality);
+        }
+    }
+
 }
+
 
