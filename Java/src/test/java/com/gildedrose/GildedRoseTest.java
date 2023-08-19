@@ -205,4 +205,17 @@ class GildedRoseTest {
         }
     }
 
+    @Nested
+    class ConjuredItems {
+
+        @Test
+        void degradesTwiceAsFast() {
+            Item item = new Item("Conjured", 5, 2);
+
+            whenQualityIsUpdated(item);
+
+            assertEquals(0, item.quality);
+        }
+    }
+
 }
