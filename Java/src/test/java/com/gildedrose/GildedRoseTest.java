@@ -208,13 +208,17 @@ class GildedRoseTest {
     @Nested
     class ConjuredItems {
 
-        @Test
-        void degradesTwiceAsFast() {
-            Item item = new Item("Conjured", 5, 2);
+        @ParameterizedTest(name = "quality={0}, updatedQuality={1}")
+        @CsvSource({
+            "2, 0",
+            "3, 1",
+        })
+        void degradesTwiceAsFast(int quality, int expected) {
+            Item item = new Item("Conjured", 5, quality);
 
             whenQualityIsUpdated(item);
 
-            assertEquals(0, item.quality);
+            assertEquals(expected, item.quality);
         }
     }
 
