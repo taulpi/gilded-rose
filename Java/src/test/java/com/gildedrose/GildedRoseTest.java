@@ -27,42 +27,61 @@ class GildedRoseTest {
         assertEquals(expected, item.sellIn);
     }
 
-    @ParameterizedTest(name = "quality={0}, updatedQuality={1}")
-    @CsvSource({
-        "2, 1",
-        "1, 0",
-        "50, 49",
-    })
-    void qualityIsDecreased(int quality, int expected) {
-        Item item = new Item("some Item", 5, quality);
+    @Nested
+    class TheQuality {
+        @ParameterizedTest(name = "quality={0}, updatedQuality={1}")
+        @CsvSource({
+            "2, 1",
+            "1, 0",
+            "50, 49",
+        })
+        void isDecreased(int quality, int expected) {
+            Item item = new Item("some Item", 5, quality);
 
-        whenQualityIsUpdated(item);
+            whenQualityIsUpdated(item);
 
-        assertEquals(expected, item.quality);
-    }
+            assertEquals(expected, item.quality);
+        }
 
-    @ParameterizedTest(name = "sellIn={0}, quality={1}")
-    @CsvSource({
-        "0, 0",
-        "-1, 1",
-    })
-    void qualityDoesNotDecreaseBelow0(int sellIn, int quality) {
-        Item item = new Item("Some non special Item", sellIn, quality);
+        @ParameterizedTest(name = "sellIn={0}, quality={1}")
+        @CsvSource({
+            "0, 0",
+            "-1, 1",
+        })
+        void doesNotDecreaseBelow0(int sellIn, int quality) {
+            Item item = new Item("Some non special Item", sellIn, quality);
 
-        whenQualityIsUpdated(item);
+            whenQualityIsUpdated(item);
 
-        assertEquals(0, item.quality);
-    }
+            assertEquals(0, item.quality);
+        }
 
-    @Test
-    void qualityOfAllItemsIsAdjusted() {
-        Item item1 = new Item("some Item", 1, 3);
-        Item item2 = new Item("some Item", 4, 50);
+        @Test
+        void ofAllItemsIsAdjusted() {
+            Item item1 = new Item("some Item", 1, 3);
+            Item item2 = new Item("some Item", 4, 50);
 
-        new GildedRose(new Item[]{item1, item2}).updateQuality();
+            new GildedRose(new Item[]{item1, item2}).updateQuality();
 
-        assertEquals(2, item1.quality);
-        assertEquals(49, item2.quality);
+            assertEquals(2, item1.quality);
+            assertEquals(49, item2.quality);
+        }
+
+        @ParameterizedTest(name = "sellIn={0} , quality={1}, updatedQuality={2}")
+        @CsvSource({
+            "0, 2, 0",
+            "-1, 2, 0",
+            "-2, 2, 0",
+            "-100, 2, 0",
+            "-1, 50, 48",
+        })
+        void degradesTwiceAsFast_onceTheSellByDateHasPassed(int sellIn, int quality, int expected) {
+            Item item = new Item("some Item", sellIn, quality);
+
+            whenQualityIsUpdated(item);
+
+            assertEquals(expected, item.quality);
+        }
     }
 
     @Test
@@ -74,22 +93,6 @@ class GildedRoseTest {
 
         assertEquals(0, item1.sellIn);
         assertEquals(3, item2.sellIn);
-    }
-
-    @ParameterizedTest(name = "sellIn={0} , quality={1}, updatedQuality={2}")
-    @CsvSource({
-        "0, 2, 0",
-        "-1, 2, 0",
-        "-2, 2, 0",
-        "-100, 2, 0",
-        "-1, 50, 48",
-    })
-    void onceTheSellByDateHasPassed_QualityDegradesTwiceAsFast(int sellIn, int quality, int expected) {
-        Item item = new Item("some Item", sellIn, quality);
-
-        whenQualityIsUpdated(item);
-
-        assertEquals(expected, item.quality);
     }
 
 
