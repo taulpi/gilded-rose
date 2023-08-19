@@ -36,7 +36,11 @@ class GildedRose {
 
     private UpdatedItem updatedBackstagePass(Item item) {
         return new UpdatedItem(
-            new CappedQuality(new UpdatedConcertTicketQuality(item.quality, item.sellIn)),
+            new CappedQuality(
+                new UpdatedConcertTicketQuality(
+                    item.quality,
+                    item.sellIn,
+                    new ConcertTicketQualityAdjustment(item.sellIn))),
             new UpdatedNormaSellIn(item.sellIn));
     }
 

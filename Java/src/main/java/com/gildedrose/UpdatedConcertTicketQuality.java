@@ -3,10 +3,12 @@ package com.gildedrose;
 class UpdatedConcertTicketQuality implements UpdatedQuality {
     private final int oldQuality;
     private final int oldSellIn;
+    private final QualityAdjustment qualityAdjustment;
 
-    UpdatedConcertTicketQuality(int oldQuality, int oldSellIn) {
+    UpdatedConcertTicketQuality(int oldQuality, int oldSellIn, QualityAdjustment qualityAdjustment) {
         this.oldQuality = oldQuality;
         this.oldSellIn = oldSellIn;
+        this.qualityAdjustment = qualityAdjustment;
     }
 
     @Override
@@ -22,11 +24,7 @@ class UpdatedConcertTicketQuality implements UpdatedQuality {
     }
 
     private int qualityIncrease() {
-        if (oldSellIn < 6) {
-            return 3;
-        } else if (oldSellIn < 11) {
-            return 2;
-        }
-        return 1;
+        return qualityAdjustment.value();
     }
+
 }
