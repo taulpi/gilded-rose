@@ -1,9 +1,9 @@
 package com.gildedrose;
 
-class UpdatedLegendarySellIn implements UpdatedSellIn {
+class ConstantSellIn implements UpdatedSellIn {
     private final int oldSellIn;
 
-    UpdatedLegendarySellIn(int oldSellIn) {
+    ConstantSellIn(int oldSellIn) {
         this.oldSellIn = oldSellIn;
     }
 

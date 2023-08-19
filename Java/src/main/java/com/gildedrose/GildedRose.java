@@ -44,8 +44,8 @@ class GildedRose {
 
     private UpdatedItem updatedLegendary(Item item) {
         return new UpdatedItem(
-            new UpdatedLegendaryQuality(),
-            new UpdatedLegendarySellIn(item.sellIn));
+            new ConstantQuality(80),
+            new ConstantSellIn(item.sellIn));
     }
 
 }
