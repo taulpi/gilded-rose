@@ -16,12 +16,14 @@ class GildedRose {
     }
 
     private UpdatedItem updated(Item item) {
-        return switch (item.name) {
-            case "Sulfuras, Hand of Ragnaros" -> updatedLegendary(item);
-            case "Aged Brie" -> updatedAgedBrie(item);
-            case "Backstage passes to a TAFKAL80ETC concert" -> updatedBackstagePass(item);
-            default -> updatedNormal(item);
-        };
+        if ("Sulfuras, Hand of Ragnaros".equals(item.name)) {
+            return updatedLegendary(item);
+        } else if ("Aged Brie".equals(item.name)) {
+            return updatedAgedBrie(item);
+        } else if ("Backstage passes to a TAFKAL80ETC concert".equals(item.name)) {
+            return updatedBackstagePass(item);
+        }
+        return updatedNormal(item);
     }
 
     private UpdatedItem updatedNormal(Item item) {
